@@ -12,6 +12,6 @@ The most interesting files are BinarySearchTree.c and HuffmanCoding.c.
 
 I hope I will keep updating this project with new data structures. Right now, February 2023, the file
 Graphs.c, for example, is highly incomplete. At this moment, there is nothing on Hashing, also. Even more, 
-it would be good to have some intrincated trees (like AVL trees and B-trees, for example). 
+it would be good to have some more intrincated trees (like AVL trees and B-trees, for example). 
 
 Please feel free to use anything you want from this project. This is all done for didactic purposes.
