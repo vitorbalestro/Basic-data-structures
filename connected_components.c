@@ -107,9 +107,9 @@ void sets_union(int i, int j, TElement **pointers_dict, int n) {
 
 }
 
-void connected_components(TGraph *G, THead **sets_array) {
+void connected_components(TGraph *G, TElement **pointers_dict,THead **sets_array) {
     int n = G->num_vert;
-    TElement **pointers_dict = make_initial_sets(n, sets_array);
+   // TElement **pointers_dict = make_initial_sets(n, sets_array);
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < n; j++) {
             if(G->adjacency_matrix[i][j] == 1) {
@@ -130,14 +130,20 @@ void print_connected_components(THead **sets_array, int n) {
                 printf("%d --", node->label);
                 node = node->next;
             }
+            printf("\n");
         }
-        printf("\n");
+        
     }
 }
 
 int main(int argc, char *argv[]){
 
     int n = 6;
+
+    THead **sets_array;
+    sets_array = (THead**)malloc(n * sizeof(THead));
+    TElement ** pointers_dict;
+    pointers_dict = make_initial_sets(n,sets_array);
 
     TGraph *G;
     G = (TGraph*)malloc(sizeof(TGraph));
@@ -151,14 +157,12 @@ int main(int argc, char *argv[]){
         }
     }
 
-    THead **sets_array;
-    sets_array = (THead**)malloc(n * sizeof(THead));
 
     G->adjacency_matrix[1][2] = 1;
     G->adjacency_matrix[1][3] = 1;
     G->adjacency_matrix[4][5] = 1;
 
-    connected_components(G,sets_array);
+    connected_components(G,pointers_dict,sets_array);
     print_connected_components(sets_array,n);
 
     return 0;
